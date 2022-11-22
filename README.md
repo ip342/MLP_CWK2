@@ -1,5 +1,5 @@
 # Machine Learning Practical
-test
+
 This repository contains the code for the University of Edinburgh [School of Informatics](http://www.inf.ed.ac.uk) course Machine Learning Practical.
 
 This assignment-based course is focused on the implementation and evaluation of machine learning systems. Students who do this course will have experience in the design, implementation, training, and evaluation of machine learning systems.
