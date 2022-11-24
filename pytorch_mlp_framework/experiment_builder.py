@@ -155,8 +155,8 @@ class ExperimentBuilder(nn.Module):
         """
         for p in model.named_parameters():
             if p.requires_grad:
-                 layers.append(p.name)
-                    all_grads.append(torch.abs(torch.mean(p.data)))
+                layers.append(p.name)
+                all_grads.append(torch.abs(torch.mean(p.data)))
             
         
         plt = self.plot_func_def(all_grads, layers)
