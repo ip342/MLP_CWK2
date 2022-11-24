@@ -153,18 +153,16 @@ class ExperimentBuilder(nn.Module):
         """
         Complete the code in the block below to collect absolute mean of the gradients for each layer in all_grads with the             layer names in layers.
         """
-        for p in named_parameters:
-            if p.requires_grad:
-                layers.append(p.name)
-                all_grads.append(torch.abs(torch.mean(p.data)))
+         for name, param in named_parameters:
+            if(param.requires_grad) and ("bias" not in n):
+                layers.append(name)
+                all_grads.append(param.grad.abs().mean())
             
         
         plt = self.plot_func_def(all_grads, layers)
         
         return plt
-    
-    
-    
+
     
     def run_train_iter(self, x, y):
         
@@ -295,7 +293,7 @@ class ExperimentBuilder(nn.Module):
             ################################################################
             ##### Plot Gradient Flow at each Epoch during Training  ######
             print("Generating Gradient Flow Plot at epoch {}".format(epoch_idx))
-            plt = self.plot_grad_flow(self.model.parameters())
+            plt = self.plot_grad_flow(self.model.named_parameters())
             if not os.path.exists(os.path.join(self.experiment_saved_models, 'gradient_flow_plots')):
                 os.mkdir(os.path.join(self.experiment_saved_models, 'gradient_flow_plots'))
                 # plt.legend(loc="best")
