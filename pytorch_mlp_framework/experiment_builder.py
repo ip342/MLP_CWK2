@@ -152,7 +152,7 @@ class ExperimentBuilder(nn.Module):
 
         for name, param in named_parameters:
             
-            if(param.requires_grad) and ("bias" not in name):
+            if(param.requires_grad) and ("bias" not in name) and ("bn" not in name):
                 try:
                     name = name.replace('layer_dict.', '')
                 except:
